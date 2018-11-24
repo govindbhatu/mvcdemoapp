@@ -10,16 +10,16 @@ namespace MVC_Demo_App.App_Start
     {
         public static List<Customer> CustomersStore = new List<Customer>
         {
-            new Customer{Id=1,Name="Customer 1"},
-            new Customer{Id=2,Name="Customer 2"},
-            new Customer{Id=3,Name="Customer 3"},
-            new Customer{Id=4,Name="Customer 4"},
-            new Customer{Id=5,Name="Customer 5"},
-            new Customer{Id=6,Name="Customer 6"},
-            new Customer{Id=7,Name="Customer 7"},
-            new Customer{Id=8,Name="Customer 8"},
-            new Customer{Id=9,Name="Customer 9"},
-            new Customer{Id=10,Name="Customer 10"}
+            new Customer{Id=1,Name="Valda Snow"},
+            new Customer{Id=2,Name="Collette Buie"},
+            new Customer{Id=3,Name="Kisha Strecker"},
+            new Customer{Id=4,Name="Lakeesha Linneman"},
+            new Customer{Id=5,Name="Irene Cisco"},
+            new Customer{Id=6,Name="Pearlie Spargo"},
+            new Customer{Id=7,Name="Garland Cipriano"},
+            new Customer{Id=8,Name="Myrl Tellez"},
+            new Customer{Id=9,Name="Dorothy Goggins"},
+            new Customer{Id=10,Name="Many Flor"}
         };
     }
 }

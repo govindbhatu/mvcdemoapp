@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MVC_Demo_App.ViewModel;
+using MVC_Demo_App.App_Start;
 
 namespace MVC_Demo_App.Controllers
 {
@@ -13,23 +14,15 @@ namespace MVC_Demo_App.Controllers
         // GET: Customers
         public ActionResult Index()
         {
-            var customers = new List<Customer>
-            {
-                new Customer{ Name="Customer 1"},
-                new Customer{ Name="Customer 2"}
-            };
             var viewModel = new RandomMovieViewModel
             {
-                Customers = customers
+                Customers = CustomerStorage.CustomersStore
             };
             return View(viewModel);
         }
         public ActionResult Detail(int Id)
         {
-            var customer = new Customer
-            {
-                Name = "Detail of customer"
-            };
+            var customer = CustomerStorage.CustomersStore.Where(item => item.Id == Id).FirstOrDefault();
             return View(customer);
         }
     }
