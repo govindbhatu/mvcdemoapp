@@ -1,4 +1,5 @@
 ﻿using MVC_Demo_App.Models;
+using System.Data.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,18 +12,32 @@ namespace MVC_Demo_App.Controllers
 {
     public class CustomersController : Controller
     {
-        // GET: Customers
-        public ActionResult Index()
+        private ApplicationDbContext _context;
+        public CustomersController()
         {
-            var viewModel = new RandomMovieViewModel
-            {
-                Customers = CustomerStorage.CustomersStore
-            };
-            return View(viewModel);
+            _context = new ApplicationDbContext();
+
+        }
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
+        // GET: Customers
+        public ViewResult Index()
+        {
+            var customers = _context.Customers.Include(c => c.MembershipType).ToList();
+            return View(customers);
+            //var viewModel = new RandomMovieViewModel
+            //{
+            //    Customers = CustomerStorage.CustomersStore
+            //};
+            //return View(viewModel);
         }
         public ActionResult Detail(int Id)
         {
-            var customer = CustomerStorage.CustomersStore.Where(item => item.Id == Id).FirstOrDefault();
+            var customer = _context.Customers.Include(c => c.MembershipType).SingleOrDefault(c => c.Id == Id);
+            if (customer == null)
+                return HttpNotFound();
             return View(customer);
         }
     }
